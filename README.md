@@ -63,7 +63,14 @@ This project is an Image Captioning AI that combines computer vision and natural
 
 ```
 project/
+├── Flickr8k_Dataset/
+│   ├── 1000268201_693b08cb0e.jpg
+│   ├── 1001773457_577c3a7d70.jpg
+│   └── ...
+├── Flickr8k_text/
+│   ├── Flickr8k.token.txt
 ├── app.py
+├── train_caption_model.py
 ├── templates/
 │   ├── index.html
 ├── static/
@@ -72,8 +79,7 @@ project/
 ├── uploads/
 ├── caption_model.h5
 ├── tokenizer.pickle
-├── requirements.txt
-└── README.md
+└── requirements.txt
 ```
 
 ## Contributing
