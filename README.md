@@ -22,7 +22,7 @@ This project is an Image Captioning AI that combines computer vision and natural
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/yourusername/image-captioning-ai.git
+    git clone https://github.com/shahram8708/image-captioning-ai.git
     cd image-captioning-ai
     ```
 
