@@ -10,8 +10,8 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.callbacks import ModelCheckpoint
 from tensorflow.keras.utils import to_categorical
 
-IMAGES_DIR = 'path/to/images'
-CAPTIONS_FILE = 'path/to/captions.txt'
+IMAGES_DIR = 'Flickr8k_Dataset'
+CAPTIONS_FILE = 'Flickr8k_text/Flickr8k.token.txt'
 
 MAX_LENGTH = 34
 VOCAB_SIZE = 5000
@@ -37,8 +37,8 @@ def load_captions(filepath):
 
 def preprocess_captions(captions):
     tokenizer = Tokenizer(num_words=VOCAB_SIZE)
-    tokenizer.fit_on_texts(captions)
-    sequences = tokenizer.texts_to_sequences(captions)
+    tokenizer.fit_on_texts(captions.values())
+    sequences = tokenizer.texts_to_sequences(captions.values())
     sequences = pad_sequences(sequences, maxlen=MAX_LENGTH, padding='post')
     with open('tokenizer.pickle', 'wb') as handle:
         pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -57,7 +57,7 @@ def data_generator(captions, features, tokenizer, max_length):
                     yield [[feature, in_seq], out_seq]
 
 def define_model(vocab_size, max_length):
-    inputs1 = Input(shape=(4096,))
+    inputs1 = Input(shape=(512,))
     fe1 = Dropout(0.5)(inputs1)
     fe2 = Dense(256, activation='relu')(fe1)
     inputs2 = Input(shape=(max_length,))
